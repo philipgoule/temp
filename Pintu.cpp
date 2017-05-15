@@ -3,9 +3,9 @@
 #include<math.h>
 #include<time.h>
 #define huo 2
-#define N 250
+#define N 10
 #define MODE 1 //运行模式，如果为1显示详细信息，如果为2则不显示
-#define DISPLAY 0 //1表示显示每一步的运行，0则不现实
+#define DISPLAY 1 //1表示显示每一步的运行，0则不现实
 static int map[N][N];//静态变量
 static int move[N+2][N+2];//记载状态，当1时为不可移动 (注意，和map相比，其边界横纵坐标都要加1)
 static double E;
@@ -72,6 +72,7 @@ for(i=N-1;i>=0;i--)
 }
 printf("-------------------\n");
 system("cls");
+system("clear");
 }
 
 
