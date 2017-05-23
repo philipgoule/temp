@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/mainTextView1"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Text"/>
+
+	<EditText
+		android:id="@+id/mainEditText1"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:ems="10"
+		android:inputType="numberDecimal|numberSigned"
+		android:hint="输入S点的经度"/>
+
+	<EditText
+		android:id="@+id/mainEditText2"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:ems="10"
+		android:inputType="numberDecimal|numberSigned"
+		android:hint="输入S点的纬度"/>
+
+	<TextView
+		android:id="@+id/mainTextView2"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Text"/>
+
+	<EditText
+		android:id="@+id/mainEditText3"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:ems="10"
+		android:inputType="numberDecimal|numberSigned"
+		android:hint="输入GP点的经度"/>
+
+	<EditText
+		android:id="@+id/mainEditText4"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:ems="10"
+		android:inputType="numberDecimal|numberSigned"
+		android:hint="输入GP点的纬度"/>
+
+	<TextView
+		android:id="@+id/mainTextView3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="东经 北纬为正 西经 南纬为负"
+		android:textColor="#1081E1"
+		android:textIsSelectable="true"/>
+
+	<Button
+		android:id="@+id/mainButton1"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="Button"/>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:text="By GL"
+			android:layout_gravity="bottom|center"
+			android:textColor="#F1E8E7"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+
