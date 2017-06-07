@@ -72,14 +72,14 @@ for(i=N-1;i>=0;i--)
 }
 printf("-------------------\n");
 system("cls");
-system("clear");
+system("clear");//清屏
 }
 
 
 //上下左右指令
 void up(int i,int j)
 {
-	if(map[i][j]!=0 || i+1>N  ) {printf("ERROR!!!\n");return;}
+  if(map[i][j]!=0 || i+1>N  ) {printf("ERROR!!!\n");return;}//判断是否为可移动块或者是否超出上边界
     map[i][j]=map[i+1][j];
     map[i+1][j]=0;
 	buzhou[bu]=1;
