@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">S_GP</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="calculate">计算</string>
+	<string name="spoint">S点坐标</string>
+	<string name="gppoint">GP点坐标</string>
+</resources>

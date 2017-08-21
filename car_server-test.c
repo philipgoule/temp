@@ -14,11 +14,11 @@
 
 #define BUFSIZE 512
 
-#define MOTOR_GO_FORWARD   digitalWrite(1,HIGH);digitalWrite(4,LOW);digitalWrite(5,HIGH);digitalWrite(6,LOW)
-#define MOTOR_GO_BACK	   digitalWrite(4,HIGH);digitalWrite(1,LOW);digitalWrite(6,HIGH);digitalWrite(5,LOW)
-#define MOTOR_GO_RIGHT	   digitalWrite(1,HIGH);digitalWrite(4,LOW);digitalWrite(6,HIGH);digitalWrite(5,LOW)
-#define MOTOR_GO_LEFT	   digitalWrite(4,HIGH);digitalWrite(1,LOW);digitalWrite(5,HIGH);digitalWrite(6,LOW)
-#define MOTOR_GO_STOP	   digitalWrite(1, LOW);digitalWrite(4,LOW);digitalWrite(5, LOW);digitalWrite(6,LOW)
+#define MOTOR_GO_FORWARD   digitalWrite(1,HIGH);digitalWrite(4,LOW); digitalWrite(5,HIGH);digitalWrite(6,LOW)
+#define MOTOR_GO_BACK	   digitalWrite(1,LOW); digitalWrite(4,HIGH);digitalWrite(5,LOW); digitalWrite(6,HIGH)
+#define MOTOR_GO_RIGHT	   digitalWrite(1,HIGH);digitalWrite(4,LOW); digitalWrite(5,LOW); digitalWrite(6,LOW)
+#define MOTOR_GO_LEFT	   digitalWrite(1,LOW); digitalWrite(4,LOW); digitalWrite(5,HIGH);digitalWrite(6,LOW)
+#define MOTOR_GO_STOP	   digitalWrite(1, LOW);digitalWrite(4,LOW); digitalWrite(5, LOW);digitalWrite(6,LOW)
 
 typedef struct CLIENT {
 	int fd;
@@ -179,20 +179,18 @@ int main(int argc, char *argv[])
 			if((z = read(sockfd,buf,sizeof buf)) >0)
 			{
       		            buf[z] = '\0';
-                	    printf("num = %d received data:%s\n",z,buf);
-			    
+                	    //printf("num = %d received data:%s\n",z,buf);
+			    /*
                             for(k=0;k<z;k++) 
 			        printf("buf[%d]=%x\n",k,buf[k]);
-
-			
-			    if(z == 4)
-			    /* if(1)*/
+			    */
+			    if(z == 5)
 			    {
-				if(buf[1] ==0x31)
+				if(buf[1] == 0x00)
 				{
 	     			    switch(buf[2])
 		         	    {
-				    case 0x32:/*MOTOR_GO_FORWARD*/system("sudo ./pwm"); printf("forward\n");break;
+					case 0x01:MOTOR_GO_FORWARD; printf("forward\n");break;
 					case 0x02:MOTOR_GO_BACK;    printf("back\n");break;            						
 					case 0x03:MOTOR_GO_LEFT;    printf("left\n");break;
 					case 0x04:MOTOR_GO_RIGHT;   printf("right\n");break;
