@@ -45,15 +45,14 @@ int main(int argc, char** argv)
     exit(0);  
     }  
   
-    while(1){
+  
     printf("send msg to server: \n");  
     fgets(sendline, 4096, stdin);  
     if( send(sockfd, sendline, strlen(sendline), 0) < 0)  
     {  
     printf("send msg error: %s(errno: %d)\n", strerror(errno), errno);  
     exit(0);  
-    }
-    }
+    }  
     if((rec_len = recv(sockfd, buf, MAXLINE,0)) == -1) {  
        perror("recv error");  
        exit(1);  

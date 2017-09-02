@@ -31,6 +31,7 @@ int main (int argc, char** argv)
     }
   degree=5+atof(argv[2])/180.0*20.0;
   wiringPiSetup ()  ;  //wiringpi初始化
+<<<<<<< HEAD
   softPwmCreate (pin, 5, RANGE) ;  //创建一个使舵机转到90的pwm输出信号
   delay(500);
   for (i = 0 ; i < 1 ; i++)
@@ -42,6 +43,18 @@ int main (int argc, char** argv)
   }
   softPwmWrite (pin, 5) ;
   delay(500);
+=======
+  softPwmCreate (pin, 15, RANGE) ;  //创建一个使舵机转到90的pwm输出信号
+  delay(1000);
+  for (i = 0 ; i < 2 ; i++)
+  {
+    softPwmWrite(pin,5);   //将pwm输出复写为使舵机转到0
+	 	   delay(1000);
+		   softPwmWrite(pin,degree);//再次复写pwm输出
+		   delay(1000);
+  }
+  softPwmWrite (pin, 15) ;
+>>>>>>> e0c092aa7682fd60b402d4d79c1bcbc4d5b35369
   exit(0);
 
 }
