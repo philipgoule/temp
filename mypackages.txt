@@ -2,7 +2,6 @@ apt
 aria2
 autoconf
 automake
-baidupcs-go
 bash
 bc
 binutils
