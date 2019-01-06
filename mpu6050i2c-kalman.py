@@ -37,45 +37,54 @@ def get_x_rotation(x,y,z):
 
 
 
-while 1:
-	bus = smbus.SMBus(1) # or bus = smbus.SMBus(1) for Revision 2 boards
-	address = 0x69       # This is the address value read via the i2cdetect command
+#while 1:
+bus = smbus.SMBus(1) # or bus = smbus.SMBus(1) for Revision 2 boards
+address = 0x69       # This is the address value read via the i2cdetect command
 
 # Now wake the 6050 up as it starts in sleep mode
-#bus.write_byte_data(address, power_mgmt_1, 0)
-#S = [0]*2
-#Y = [0]*2
-#K = [0]*2
-#P = [0]*2
+bus.write_byte_data(address, power_mgmt_1, 0)
+S = [0]*2
+Y = [0]*2
+K = [0]*2
+P = [0]*2
+N = [0]*3
+Y[0] = 1
+K[0] = 1
+P[0] = 1
 
-#S[0] = read_word_2c(0x43)
-#Y[0] = 1
-#K[0] = 1
-#P[0] = 1
-#Noise_std_ = 1  #np.square(np.var(Noise_std))  
-#Noise_     = 1   #np.square(np.var(Noise))
 
-#while 1:
+Noise_std_ = 1  #np.square(np.var(Noise_std))  
+Noise_ = 1   #np.square(np.var(Noise))
+
+while 1:
 	i=os.system('clear')
 	print "gyro data"
 	print "---------"
-	
+	#for k in range(1,3):
+	N[0] = read_word_2c(0x43)
+	N[1] = read_word_2c(0x43)
+	N[2] = read_word_2c(0x43)
+	Noise_std_ = np.square(np.var(N))  
+	Noise_ = np.square(np.var(N))
+
+
 	#gyro_xout = read_word_2c(0x43)
-#	P[1] =  np.square(P[0]) + 0.1*Noise_
-# 	K[1] =  0.1*np.sqrt( P[1]/( Noise_std_ + P[1]))
-# 	Y[1] =  Y[0] + K[1] * (S[1] - Y[0])
-# 	P[1] =  np.sqrt((1-K[1])*P[1])
-	gyro_xout = read_word_2c(0x43)
+	S[1] =  read_word_2c(0x43)
+	P[1] =  np.square(P[0]) + 0.3*Noise_
+ 	K[1] =  0.1*np.sqrt( P[1]/( Noise_std_ + P[1]))
+ 	Y[1] =  Y[0] + K[1] * (S[1] - Y[0])
+ 	P[1] =  np.sqrt((1-K[1])*P[1])
+	gyro_xout = P[1]
 	gyro_yout = read_word_2c(0x45)
 	gyro_zout = read_word_2c(0x47)
 	
 	print "gyro_xout: ", gyro_xout, " scaled: ", (gyro_xout / 131)
 	print "gyro_yout: ", gyro_yout, " scaled: ", (gyro_yout / 131)
 	print "gyro_zout: ", gyro_zout, " scaled: ", (gyro_zout / 131)
-#	P[0] = P[1]
-#	K[0] = K[0]
-#	Y[0] = Y[1]
-#	S[0] = S[1]
+	P[0] = P[1]
+	K[0] = K[1]
+	Y[0] = Y[1]
+	S[0] = S[1]
 	print
 	print "accelerometer data"
 	print "------------------"
