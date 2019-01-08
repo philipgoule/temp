@@ -40,12 +40,16 @@ while 1:
     if gy < 0.0:
         sg901 = math.acos(-gx / gxy) 
         sg902 = -math.asin(gxy / gxyz) + (0.5 * math.pi)
-        sg901 = sg901 / math.pi * 180
-        sg902 = sg902 / math.pi * 180
+    
+    
         if sg902 <40.0:
             sg902 = 40.0
+    
+    
     print(sg901)
     print(sg902)
+    sg901 = sg901 / math.pi * 180
+    sg902 = sg902 / math.pi * 180
     p1.ChangeDutyCycle(2.5 + 10 * sg901 / 180)
     p2.ChangeDutyCycle(2.5 + 10 * sg902 / 180)
     time.sleep(0.2)
