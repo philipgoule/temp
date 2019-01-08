@@ -32,16 +32,16 @@ while 1:
     gx = gyro_data['x']
     gy = gyro_data['y']
     gz = gyro_data['z']
-    gxy = ((gx ** 2) + (gy ** 2)) ** 0.5
+    gxy = ((gx**2) + (gy**2))**0.5
     gxyz = ((gx ** 2) + (gy ** 2) + (gz ** 2)) ** 0.5
     if gy >= 0.0:
-        sg901 = math.acos(gx / gxy) 
-        sg902 = math.asin(gxy / gxyz) + (0.5 * math.pi())
+        sg901 = math.acos(gx/gxy) 
+        sg902 = math.asin(gxy/gxyz) + (0.5*math.pi)
     if gy < 0.0:
         sg901 = math.acos(-gx / gxy) 
-        sg902 = -math.asin(gxy / gxyz) + (0.5 * math.pi())
-        sg901 = sg901 / math.pi() * 180
-        sg902 = sg902 / math.pi() * 180
+        sg902 = -math.asin(gxy / gxyz) + (0.5 * math.pi)
+        sg901 = sg901 / math.pi * 180
+        sg902 = sg902 / math.pi * 180
         if sg902 <40.0:
             sg902 = 40.0
     print(sg901)
