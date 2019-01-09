@@ -111,8 +111,8 @@ while 1:
 	print "x rotation: " , get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 	print "y rotation: " , get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 
-    	gx = accel_xout / 100.0
-    	gy = accel_yout / 100.0
+    	gx = -1.0 * accel_xout / 100.0
+    	gy = -1.0 * accel_yout / 100.0
     	gz = accel_zout / 100.0
     	gxy = ((gx**2) + (gy**2))**0.5
     	gxyz = ((gx ** 2) + (gy ** 2) + (gz ** 2)) ** 0.5
@@ -122,12 +122,16 @@ while 1:
     	if gy < 0.0:
     	    sg901 = math.acos(-gx / gxy) 
     	    sg902 = -math.asin(gxy / gxyz) + (0.5 * math.pi)
-    	    sg901 = sg901 / math.pi * 180
-    	    sg902 = sg902 / math.pi * 180
-    	    if sg902 <40.0:
-    	        sg902 = 40.0
+    	
+    	
+    	    if sg902 <(math.pi * 40.0 / 180.0):
+    	        sg902 = (math.pi * 40.0 / 180.0)
+    	print(sg901)
+        print(sg902)
+	sg901 = sg901 / math.pi * 180
+        sg902 = sg902 / math.pi * 180
     	print(sg901)
     	print(sg902)
-    	p1.ChangeDutyCycle(2.5 + 10 * sg901 / 180)
-    	p2.ChangeDutyCycle(2.5 + 10 * sg902 / 180)
-    	time.sleep(0.3)
+    	p1.ChangeDutyCycle(2.5 + (10.0 * sg901 / 180.0))
+    	p2.ChangeDutyCycle(2.5 + (10.0 * sg902 / 180.0))
+    	time.sleep(0.1)
