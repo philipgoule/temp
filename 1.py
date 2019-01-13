@@ -52,7 +52,8 @@ p1.start(0)
 p2.start(0)
 sg901 = 0.0
 sg902 = 0.0
-
+sg901_old = 0.0
+sg902_old = 0.0
 while 1:
 	bus = smbus.SMBus(1) # or bus = smbus.SMBus(1) for Revision 2 boards
 	address = 0x69       # This is the address value read via the i2cdetect command
@@ -132,6 +133,14 @@ while 1:
         sg902 = sg902 / math.pi * 180
     	print(sg901)
     	print(sg902)
-    	p1.ChangeDutyCycle(2.5 + (10.0 * sg901 / 180.0))
-    	p2.ChangeDutyCycle(2.5 + (10.0 * sg902 / 180.0))
-    	#time.sleep(0.1)
+        if abs(sg901 - sg901_old)>=3:
+            sg901_old=sg901
+            p1.ChangeDutyCycle(2.5 + (10.0 * sg901 / 180.0))
+        else:
+            print("staysg901")
+        if abs(sg902 - sg902_old) >=3:
+            sg902_old = sg902
+            p2.ChangeDutyCycle(2.5 + (10.0 * sg902 / 180.0))
+        else:
+            print("staysg902")
+        time.sleep(0.05)
