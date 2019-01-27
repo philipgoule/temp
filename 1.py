@@ -96,15 +96,23 @@ while 1:
 	print
 	print "accelerometer data"
 	print "------------------"
-	
-	accel_xout = read_word_2c(0x3b)
-	accel_yout = read_word_2c(0x3d)
-	accel_zout = read_word_2c(0x3f)
-		
+	accel_xout = 0
+	accel_yout = 0
+	accel_zout = 0
+        for x in range(1,5):
+            accel_xout+= read_word_2c(0x3b)
+	    accel_yout+= read_word_2c(0x3d)
+	    accel_zout+= read_word_2c(0x3f)
+        accel_xout =  accel_xout/5.0
+        accel_yout =  accel_yout/5.0
+        accel_zout =  accel_zout/5.0
+
 	accel_xout_scaled = accel_xout / 16384.0
 	accel_yout_scaled = accel_yout / 16384.0
 	accel_zout_scaled = accel_zout / 16384.0
-	
+        accel_xout
+        accel_yout
+        accel_zout
 	print "accel_xout: ", accel_xout, " scaled: ", accel_xout_scaled
 	print "accel_yout: ", accel_yout, " scaled: ", accel_yout_scaled
 	print "accel_zout: ", accel_zout, " scaled: ", accel_zout_scaled
@@ -133,12 +141,12 @@ while 1:
         sg902 = sg902 / math.pi * 180
     	print(sg901)
     	print(sg902)
-        if abs(sg901 - sg901_old)>=3:
+        if abs(sg901 - sg901_old)>=1:
             sg901_old=sg901
             p1.ChangeDutyCycle(2.5 + (10.0 * sg901 / 180.0))
         else:
             print("staysg901")
-        if abs(sg902 - sg902_old) >=3:
+        if abs(sg902 - sg902_old) >=1:
             sg902_old = sg902
             p2.ChangeDutyCycle(2.5 + (10.0 * sg902 / 180.0))
         else:
