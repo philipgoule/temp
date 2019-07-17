@@ -59,7 +59,6 @@ lftp
 libandroid-glob
 libandroid-shmem
 libandroid-support
-libandroid-support-dev
 libarchive
 libassuan
 libbz2
@@ -110,7 +109,6 @@ libtiff
 libtool
 libunibilium
 libunistring
-libutil
 libuuid
 libuv
 libvterm
@@ -143,7 +141,6 @@ nano
 ncurses
 ncurses-ui-libs
 ncurses-utils
-ndk-stl
 ndk-sysroot
 neovim
 netcat
@@ -183,7 +180,6 @@ tree
 tsu
 util-linux
 vim
-vim-python
 vim-runtime
 w3m
 weechat

@@ -7,20 +7,20 @@ import atexit
 import math
 from mpu6050 import mpu6050
 sensor = mpu6050(0x69)
-atexit.register(GPIO.cleanup)  
+atexit.register(GPIO.cleanup)
 servopin1 = 20
 servopin2 = 21
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servopin1, GPIO.OUT, initial=False)
 GPIO.setup(servopin2, GPIO.OUT, initial=False)
-p1 = GPIO.PWM(servopin1,50) #50HZ
-p2 = GPIO.PWM(servopin2,50) #50HZ
+p1 = GPIO.PWM(servopin1, 50)  # 50HZ
+p2 = GPIO.PWM(servopin2, 50)  # 50HZ
 p1.start(0)
 p2.start(0)
 sg901 = 0.0
 sg902 = 0.0
 while 1:
-    i=os.system('clear')
+    i = os.system('clear')
     accel_data = sensor.get_accel_data()
     print(accel_data['x'])
     print(accel_data['y'])
@@ -35,17 +35,15 @@ while 1:
     gxy = ((gx**2) + (gy**2))**0.5
     gxyz = ((gx ** 2) + (gy ** 2) + (gz ** 2)) ** 0.5
     if gy >= 0.0:
-        sg901 = math.acos(gx/gxy) 
+        sg901 = math.acos(gx/gxy)
         sg902 = math.asin(gxy/gxyz) + (0.5*math.pi)
     if gy < 0.0:
-        sg901 = math.acos(-gx / gxy) 
+        sg901 = math.acos(-gx / gxy)
         sg902 = -math.asin(gxy / gxyz) + (0.5 * math.pi)
-    
-    
-        if sg902 <40.0:
+
+        if sg902 < 40.0:
             sg902 = 40.0
-    
-    
+
     print(sg901)
     print(sg902)
     sg901 = sg901 / math.pi * 180
