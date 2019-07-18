@@ -31,6 +31,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
+Plug 'tpope/vim-repeat'
+Plug 'luchermitte/vimfold4c'
+Plug 'mattneary/longjump'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'Yggdroot/LeaderF'
+Plug 'mg979/vim-visual-multi'
 let g:deoplete#enable_at_startup = 1
 call plug#end()
 "let g:neoformat_python_autopep8 = {
@@ -91,3 +97,46 @@ nnoremap <leader>t :TagbarToggle<cr>
 "neoformat
 
 let g:neoformat_enabled_python = ['autopep8']
+
+
+"vimfold4c
+
+let g:fold_options = {
+   \ 'fallback_method' : { 'line_threshold' : 2000, 'method' : 'syntax' },
+   \ 'fold_blank': 0,
+   \ 'fold_includes': 0,
+   \ 'max_foldline_length': 'win',
+   \ 'merge_comments' : 1,
+   \ 'show_if_and_else': 1,
+   \ 'strip_namespaces': 1,
+   \ 'strip_template_arguments': 1
+   \ }
+
+"rainbow_parentheses
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
