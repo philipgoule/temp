@@ -8,6 +8,7 @@ bash
 bc
 binutils
 bison
+build-essential
 busybox
 bzip2
 c-ares
@@ -16,6 +17,7 @@ clang
 cmake
 command-not-found
 coreutils
+ctags
 curl
 dash
 desktop-file-utils
@@ -23,13 +25,17 @@ diffutils
 dirmngr
 dnsutils
 dpkg
+ed
 elinks
 emacs-x
+findutils
 fish
 flex
 fontconfig
 freetype
 fribidi
+fzf
+game-repo
 gawk
 gdbm
 gdk-pixbuf
@@ -41,6 +47,7 @@ glib-bin
 gnugo
 gnupg
 gnutls
+gperf
 gpgv
 grep
 gtk-update-icon-cache
@@ -82,6 +89,7 @@ libgnutls
 libgpg-error
 libgraphite
 libice
+libiconv
 libidn
 libidn2
 libjpeg-turbo
@@ -133,6 +141,8 @@ libxshmfence
 libxt
 littlecms
 lynx
+lzip
+lzop
 m4
 make
 man
@@ -144,6 +154,7 @@ ncurses-utils
 ndk-sysroot
 neovim
 netcat
+ninja
 nmap
 openjpeg
 openssh
@@ -156,7 +167,9 @@ perl
 pinentry
 pkg-config
 poppler
+procps
 proot
+psmisc
 pure-ftpd
 pv
 python
@@ -165,6 +178,7 @@ readline
 resolv-conf
 rhash
 root-repo
+science-repo
 screenfetch
 sed
 shared-mime-info
@@ -174,10 +188,13 @@ termux-am
 termux-api
 termux-auth
 termux-exec
+termux-keyring
+termux-licenses
 termux-tools
 tmux
 tree
 tsu
+unstable-repo
 util-linux
 vim
 vim-runtime
@@ -188,4 +205,5 @@ x11-repo
 xorg-xauth
 xz-utils
 zip
+zlib
 zsh
