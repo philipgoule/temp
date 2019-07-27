@@ -18,6 +18,7 @@ Plug 'majutsushi/tagbar'
 Plug 'lfv89/vim-interestingwords'
 Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
+Plug 'itchyny/vim-cursorword'
 "pip  install pylint
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
