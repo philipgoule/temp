@@ -2,8 +2,8 @@
 #!/usr/bin/python3
 # coding: utf-8
 import math
-import pygame_sdl2
-pygame_sdl2.import_as_pygame()
+#import pygame_sdl2
+#pygame_sdl2.import_as_pygame()
 import sys
 import pygame
 from pygame.locals import *
@@ -11,10 +11,10 @@ import random
 
 
 G = 100000
-WIDTH  = 1080
-HEIGHT = 2340
+WIDTH  = 800
+HEIGHT = 800
 PI = math.pi
-STARTBODYCOUNT = 50
+STARTBODYCOUNT = 4
 STARTBODYSPEED = 50
 BLACK = 0,0,0
 WHITE = 255,255,255
@@ -58,7 +58,7 @@ class Body():
 		
 	def show(self):
 		global SCREEN
-		pygame.draw.circle(SCREEN,self.col,self.pos,self.r,self.r)
+		pygame.draw.circle(SCREEN,self.col,[int(self.pos[0]),int(self.pos[1])],int(self.r),int(self.r))
 			
 	def update(self):
 		self.pos[0] = self.pos[0] + self.vel[0]
@@ -67,8 +67,8 @@ class Body():
 		
 		if((len(self.path) > MAXPATH) and (len(stars) > 10)):
 			del self.path[0]
-		if(len(self.path) > (MAXPATH*3)):
-			del self.path[0]
+		#if(len(self.path) > (MAXPATH*3)):
+			#del self.path[0]
 		
 		 #下面反弹效果这部分给注释了.留着或者能挽救下跑出屏幕的可怜星星
 		if(self.pos[0] <= -WIDTH*2) or (self.pos[0] >= WIDTH*2):
@@ -116,17 +116,20 @@ def setup():
 	
 
 def draw1():
-    for i in range(0,len(stars)):
-        closed = False
-        pygame.draw.circle(SCREEN,stars[i].col,[int(stars[i].pos[0]),int(stars[i].pos[1])],int(stars[i].r),int(stars[i].r))
-        #stars[i].show()
-        stars[i].update()
-        attract(stars[i])
-        #pygame.draw.aalines(screen,stars[i].col,closed,stars[i].path,1)
-        #pygame.draw.aalines(SCREEN,stars[i].col,closed,stars[i].path,1)
-        #stars[i].showPath()
-        for j in range(0,len(stars[i].path)-1):
-        	pygame.draw.line(SCREEN,stars[i].col,stars[i].path[j],stars[i].path[j+1],width=1)
+	for i in range(0,len(stars)-1):
+		closed = False
+		#pygame.draw.circle(SCREEN,stars[i].col,[int(stars[i].pos[0]),int(stars[i].pos[1])],int(stars[i].r),int(stars[i].r))
+		stars[i].show()
+		
+		attract(stars[i])
+		stars[i].update()
+		#pygame.draw.aalines(screen,stars[i].col,closed,stars[i].path,1)
+		#pygame.draw.aalines(SCREEN,stars[i].col,closed,stars[i].path,1)
+		#stars[i].showPath()
+		for j in range(0,len(stars[i].path)-1):
+			if(j==0):
+				continue
+			pygame.draw.line(SCREEN,stars[i].col,stars[i].path[j-1],stars[i].path[j],1)
         
         
 def main():
@@ -137,10 +140,13 @@ def main():
 	print(max1.calr())
 	print(max1.r)
 	setup()
-	print(stars[49].id)
-	print(stars[49].mass)
+	print(stars[1].id)
+	print(stars[1].mass)
 	print()
 	while True:
+		for event in pygame.event.get():
+			if event.type in (pygame.QUIT, pygame.KEYDOWN):
+				sys.exit()  # 按键响应，按键后退出
 		clock.tick(framerate)
 		SCREEN.fill((0, 0, 0))
 		#max1.show()
