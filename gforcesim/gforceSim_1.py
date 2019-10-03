@@ -224,8 +224,8 @@ def main():
 			
 			if stars[i].mass >= max_mass:
 				max_mass = stars[i].mass
-				max_pos[0] = stars[i].pos[0] - 800
-				max_pos[1] = stars[i].pos[1] - 800
+				max_pos[0] = stars[i].pos[0] - 500/scale
+				max_pos[1] = stars[i].pos[1] - 500/scale
 				#max_pos = [0,0]
 				#max_pos[0] = max_pos[0]*scale
 				#max_pos[1] = max_pos[1]*scale
