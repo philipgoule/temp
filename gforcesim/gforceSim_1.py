@@ -2,8 +2,8 @@
 #!/usr/bin/python3
 # coding: utf-8
 import math
-import pygame_sdl2
-pygame_sdl2.import_as_pygame()
+#import pygame_sdl2
+#pygame_sdl2.import_as_pygame()
 import sys
 import pygame
 from pygame.locals import *
@@ -11,8 +11,8 @@ import random
 
 
 G = 3000
-WIDTH  = 800
-HEIGHT = 800
+WIDTH  = 1600
+HEIGHT = 1600
 PI = math.pi
 STARTBODYCOUNT = 20
 STARTBODYSPEED = 30
@@ -74,7 +74,7 @@ class Body():
 		
 		
 		
-		pygame.draw.circle(SCREEN,self.col,[scale*(self.pos[0]-max_pos[0]),scale*(self.pos[1]-max_pos[1])],int(scale*self.r),int(scale*self.r))
+		pygame.draw.circle(SCREEN,self.col,[int(scale*(self.pos[0]-max_pos[0])),int(scale*(self.pos[1]-max_pos[1]))],int(scale*self.r),int(scale*self.r))
 		
 		
 	
@@ -101,8 +101,9 @@ class Body():
 		path_int = []
 		global SCREEN
 		for j in range(0,len(self.path)):
-			path_int.append([scale*(self.path[j][0]-max_pos[0]),scale*(self.path[j][1]-max_pos[1])])
-		pygame.draw.lines(SCREEN,self.col,0,path_int,1)
+			path_int.append([int(scale*(self.path[j][0]-max_pos[0])),int(scale*(self.path[j][1]-max_pos[1]))])
+		if len(path_int)>1:
+			pygame.draw.lines(SCREEN,self.col,0,path_int,1)
 		
 
 #other = Body()
