@@ -1,18 +1,15 @@
 #!/usr/bin/python3
 # coding: utf-8
+import pygame_sdl2
+pygame_sdl2.import_as_pygame()
 import pygame
 import math
 import random
 import sys
 k = 1e7            # 距离缩放参数
-m = 5.9742e24      # 地球质量
-M = 1898.7e27      # 木星质量
 G = 0.5    # 万有引力常量
 t = 1e5            # 时间缩放参数
 
-pos_x= 100           # 地球坐标
-pos_y= 400
-earth = pos_x, pos_y
 vel_x= 80          # 地球速度
 vel_y= 60
 jupiter = 700, 300 # 木星坐标
@@ -147,7 +144,7 @@ def draw1():
         #stars[i].showPath()
 
 pygame.init()  # 初始化
-screen = pygame.display.set_mode((width,height))  # 创建窗口
+screen = pygame.display.set_mode(width,height)  # 创建窗口
 e = pygame.image.load("earth.png").convert_alpha()  # 地球图片
 j = pygame.image.load("jupiter.png").convert_alpha()  # 木星图片
 font = pygame.font.Font('./zhaozi.ttf', 30)  # 显示中文需要字体，否则可略过
@@ -164,27 +161,7 @@ while True:  # 主循环
     #screen.blit(j, j1.pos)  # 画木星
     #setup()
     # 地木坐标差
-    delta_x = (j1.pos[0] - earth[0]) * k
-    delta_y = (j1.pos[1] - earth[1]) * k
-    # 地木距离平方
-    r2 = delta_x ** 2 + delta_y ** 2
-    # 地木间引力，万有引力定律
-    F = G * m * M / r2
-    # 地木夹角
-    theta = math.acos(delta_x / r2 ** 0.5)
-    # x、y 轴引力分量
-    fx = abs(F * math.cos(theta)) * sign(delta_x)
-    fy = abs(F * math.sin(theta)) * sign(delta_y)
-    # x、y 轴加速度，牛顿第二定律
-    ax = fx / m
-    ay = fy / m
-    # 速度变化，vt = v0 + at
-    vel_x += ax * t
-    vel_y += ay * t
-    # 位移变化，st = s0 + vt
-    pos_x += vel_x * t / k
-    pos_y += vel_y * t / k
-    earth = int(pos_x), int(pos_y)
+
     #pygame.draw.circle(screen, white, j1.pos, 30, 30)#画圆
     #closed = False
     #pygame.draw.aalines(screen,white,closed,path1,1)
