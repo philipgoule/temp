@@ -11,8 +11,8 @@ import random
 
 
 G = 1000   #引力常数
-WIDTH  = 1480
-HEIGHT = 1080
+WIDTH  = 2500
+HEIGHT = 1600
 PI = math.pi
 STARTBODYCOUNT = 100    #初始化星星数量
 STARTBODYSPEED = 100		#初始化星星速度范围
@@ -193,8 +193,8 @@ def main():
 				y_low = stars[i].pos[1]
 			if stars[i].pos[1] >= y_high:
 				y_high = stars[i].pos[1]
-			x_scale = (0.8*1000/(x_high - x_low))
-			y_scale = (0.8*1000/(y_high - y_low))
+			x_scale = (1*WIDTH/(x_high - x_low))
+			y_scale = (1*HEIGHT/(y_high - y_low))
 			if ((x_scale <= 1)or (y_scale <= 1)):
 				if x_scale >= y_scale:
 					scale = y_scale
@@ -213,8 +213,8 @@ def main():
 			if stars[i].mass >= max_mass:	#此段代码为了将质量最大的星星为中心并设置到画面指定坐标
 				max_mass = stars[i].mass
 				#以下两行代码将最大星星显示到像素坐标500,500
-				max_pos[0] = stars[i].pos[0] - 500/scale
-				max_pos[1] = stars[i].pos[1] - 500/scale
+				max_pos[0] = stars[i].pos[0] - 0.5*WIDTH/scale
+				max_pos[1] = stars[i].pos[1] - 0.5*HEIGHT/scale
 				#max_pos = [0,0]
 				#max_pos[0] = max_pos[0]*scale
 				#max_pos[1] = max_pos[1]*scale
