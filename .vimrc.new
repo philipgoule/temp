@@ -57,6 +57,9 @@ Plugin 'itchyny/vim-cursorword'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'lfv89/vim-interestingwords'
 "highlight with <leader>k leader"
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'luchermitte/vimfold4c'
 call vundle#end()
 map <C-n> :NERDTreeToggle<CR>
 map <C-n>f :NERDTreeFind<CR>
@@ -90,6 +93,8 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_show_hidden = 1
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
