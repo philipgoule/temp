@@ -1,0 +1,97 @@
+set nocompatible
+"显示行号"
+set number
+" 隐藏滚动条"    
+set guioptions-=r 
+set guioptions-=L
+set guioptions-=b
+"隐藏顶部标签栏"
+set showtabline=1
+"设置字体"
+set guifont=Monaco:h13         
+syntax on   "开启语法高亮"
+let g:solarized_termcolors=256  "solarized主题设置在终端下的设置"
+set background=dark     "设置背景色"
+set nowrap  "设置不折行"
+set fileformat=unix "设置以unix的格式保存文件"
+set cindent     "设置C样式的缩进格式"
+set tabstop=4   "设置table长度"
+set shiftwidth=4        "同上"
+set showmatch   "显示匹配的括号"
+set scrolloff=5     "距离顶部和底部5行"
+set laststatus=2    "命令行为两行"
+set fenc=utf-8      "文件编码"
+set backspace=2
+set mouse=a     "启用鼠标"
+set selection=exclusive
+set selectmode=mouse,key
+set matchtime=5
+set ignorecase      "忽略大小写"
+set incsearch
+set hlsearch        "高亮搜索项"
+set noexpandtab     "不允许扩展table"
+set whichwrap+=<,>,h,l
+set autoread
+set cursorline      "突出显示当前行"
+set cursorcolumn        "突出显示当前列"
+set relativenumber
+highlight CursorLine cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=Gray ctermfg=green guibg=NONE guifg=NONE
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'mhinz/vim-startify'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Yggdroot/indentLine'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'itchyny/vim-cursorword'   
+"下划线underline"
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'lfv89/vim-interestingwords'
+"highlight with <leader>k leader"
+call vundle#end()
+map <C-n> :NERDTreeToggle<CR>
+map <C-n>f :NERDTreeFind<CR>
+nmap ss <Plug>(easymotion-s2)
+colorscheme hybrid
+filetype plugin indent on  
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+let NERDTreeShowHidden=1
+"rainbow_parentheses
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
