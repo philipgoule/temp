@@ -111,5 +111,6 @@ function CheckPythonSyntax()
     let &makeprg     = mp
     let &errorformat = ef
 endfunction
-
+highlight LineNr ctermfg=white
+highlight LineNr guifg=white
 map <F5> :call CheckPythonSyntax()<CR>
