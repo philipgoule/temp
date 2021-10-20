@@ -1,6 +1,7 @@
 set nocompatible
 "显示行号"
 set number
+set wrap
 " 隐藏滚动条"    
 set guioptions-=r 
 set guioptions-=L
