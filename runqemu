@@ -1,0 +1,10 @@
+#!/bin/bash
+#qemu-system-x86_64 \
+#    -hda ~/debian/debian11.qcow2 \    #hd1.img 为第一个虚拟磁盘文件（如果没有可以通过dd或者qemu-img create 创建）
+#	-cdrom ~/debian/debian-11.1.0-amd64-netinst.iso \    #系统安装盘位置(Termux的存储空间访问权限需要在系统设置中手动开启)
+#	-m 2048 \    #内存大小微2048MB
+#	-netdev user,id=user.0 \
+#    -device rtl8139,netdev=user.0 \
+#    -vga vmware \
+#    -display vnc=:10    #输出vnc模式其中:1~:10 对应vnc端口 5901~5910
+qemu-system-x86_64 -hda ~/debian/debian11.qcow2 -cdrom ~/debian/debian-11.1.0-amd64-netinst.iso -m 2048 -netdev user,id=user.0 -device rtl8139,netdev=user.0  -vga vmware -display vnc=:10 -accel tcg,thread=multi
