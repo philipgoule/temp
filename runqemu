@@ -7,4 +7,4 @@
 #    -device rtl8139,netdev=user.0 \
 #    -vga vmware \
 #    -display vnc=:10    #输出vnc模式其中:1~:10 对应vnc端口 5901~5910
-qemu-system-x86_64 -hda ~/debian/debian11.qcow2 -cdrom ~/debian/debian-11.1.0-amd64-netinst.iso -m 2048 -netdev user,id=user.0 -device rtl8139,netdev=user.0  -vga vmware -display vnc=:10 -accel tcg,thread=multi
+qemu-system-x86_64 -hda ~/debian/debian.qcow2 -cdrom ~/debian/debian-11.1.0-amd64-netinst.iso -boot menu=on -m 2048 -netdev user,id=user.0 -device rtl8139,netdev=user.0  -vga vmware -display vnc=:1 -k en-us -net user,hostfwd=tcp::10021-:22 -net nic
